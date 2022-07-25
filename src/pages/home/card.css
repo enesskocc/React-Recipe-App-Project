@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card:hover{
+    transition: z-index 500ms;
+    transform:500ms;
+    z-index: 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
