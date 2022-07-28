@@ -1,29 +1,29 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React, {useState} from "react";
+import { Hamburger, Logo, Menu, MenuLink, Nav } from "./NavbarStyles";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+const[acik,setAcik]=useState(false)
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
-  <div className="container-fluid">
-    <Link className="navbar-brand" to="/">EK</Link>
-    
-    <div className="collapse navbar-collapse justify-content-end " id="navbarNav">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/About">ABOUT</Link>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" target="_blank" href="https://github.com/enesskocc">GITHUB</a>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/logout">LOGOUT</Link>
-        </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
-  )
-}
+    <Nav>
+      <Logo to="/home">
+        <i>{"<HOME>"}</i>
+        <span>EK</span>
+      </Logo>
 
-export default Navbar
+      <Hamburger onClick={() => setAcik(!acik)}>
+        <GiHamburgerMenu />
+      </Hamburger>
+
+      <Menu onClick={() => setAcik(!acik)} osman={acik}>
+        <MenuLink to="/about">About</MenuLink>
+        <a href="https://github.com" target="blank">
+          Github
+        </a>
+        <MenuLink to="/">Logout</MenuLink>
+      </Menu>
+    </Nav>
+  );
+};
+
+export default Navbar;

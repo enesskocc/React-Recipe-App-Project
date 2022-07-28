@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   DetailContainer,
   DetailPart,
@@ -8,10 +8,15 @@ import {
   OtherPart,
 } from "./DetailsStyles";
 import dietSvg from "../../img/diet.svg";
-const Details = ({ recipe }) => {
-  return (
+import { useLocation } from "react-router-dom";
+const Details = () => {
+  //! useLocation= useNavigate in kardeşidir, navigate in state ine yüklenen veriyi navigate in yönlendirdiği sayfada karşılar
 
-   // alltakiler i yorumdan çıkardığınızda, recipe api sinin buraya yönlenmiş olması gerekir, örneğin useNavigate ile
+  const location = useLocation();
+  const recipe = location.state.recipe;
+  console.log(recipe);
+  return (
+    // alltakiler i yorumdan çıkardığınızda, recipe api sinin buraya yönlenmiş olması gerekir, örneğin useNavigate ile
     <DetailContainer>
       <HeaderContainer>
         <h1> {recipe.label}</h1>
@@ -53,10 +58,11 @@ const Details = ({ recipe }) => {
         </ImgContainer>
 
         <IngredContainer>
-          {recipe.ingredientLines.map((malzeme, index) => (
+          {recipe.ingredientLines.map((malzemeler, index) => (
             <div key={index}>
               <p>
-             
+                {index + 1} * {malzemeler}
+                {/* ingredientLines içinde bir sürü obje var tek tek yazdır, başına no ekle 1*{malzeme} gibi */}
               </p>
             </div>
           ))}
@@ -64,6 +70,6 @@ const Details = ({ recipe }) => {
       </DetailPart>
     </DetailContainer>
   );
-}
+};
 
-export default Details
+export default Details;

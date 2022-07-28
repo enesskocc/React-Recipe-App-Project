@@ -38,19 +38,19 @@ const Home = () => {
           setQuery={setQuery}
           getData={getData}
         />
-        {veri ? ( <MainContainer2>{
+        {veri ? ( <MainContainer>{
           veri.hits.map((i, index) => (
             
             <RecipeCard recipe={i.recipe} key={index} />
-            ))}</MainContainer2>
+            ))}</MainContainer>
           
         ) : (
-          <MainContainer>
+          
             <ImgDiv>
               {" "}
               <HomeImg src={anaresim} alt="" />
             </ImgDiv>
-          </MainContainer>
+          
         )}
       </div>
     </div>
